@@ -1,0 +1,544 @@
+{
+	"info": {
+		"_postman_id": "d8c016d9-39fd-456b-8a40-5ad0b8c11b4b",
+		"name": "sla",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"j12tb\",\r\n    \"fullname\":\"jerapiblannett3110\",\r\n    \"avatar\":\"J\",\r\n    \"hashed_password\":\"su\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/user",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/user",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit info",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fullname\":\"blazeapi\",\r\n    \"protect_level\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/user",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change pwd",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hashed_password_old\":\"su\",\r\n    \"hashed_password_new\":\"sukudo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/user/changepwd",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user",
+								"changepwd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/user/search?q=j12t",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "j12t"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hashed_password\":\"su\",\r\n    \"wipe_data\":true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/user",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODI2MzZ9.YA-Y77a44DDQJ7jeT_9_9ocJP-rwLngnEiv2-K49syI",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "access_token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "session",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"j12tb\",\r\n    \"hashed_password\":\"su\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/session/login",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"session",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/session?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODMxNzd9.10u8bPihS8p-3P7dy8wqIBmc1CkllkkejPbfeLFzm3E",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"session"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODMxNzd9.10u8bPihS8p-3P7dy8wqIBmc1CkllkkejPbfeLFzm3E"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getall",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/session/history",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"session",
+								"history"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/session/logout?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODEwMTV9.AuI2W-cYSmXAjhrKPY4TH53LvAgqvMGMEHfi0nI_xX8",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"session",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODEwMTV9.AuI2W-cYSmXAjhrKPY4TH53LvAgqvMGMEHfi0nI_xX8"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete all",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/session/force_logout?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODEwMTV9.AuI2W-cYSmXAjhrKPY4TH53LvAgqvMGMEHfi0nI_xX8",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"session",
+								"force_logout"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODEwMTV9.AuI2W-cYSmXAjhrKPY4TH53LvAgqvMGMEHfi0nI_xX8"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODMxNzd9.10u8bPihS8p-3P7dy8wqIBmc1CkllkkejPbfeLFzm3E",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "access_token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "url",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"original_url\":\"something\",\r\n    \"require_login\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/url",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/url",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"url_id\":\"12333\",\r\n    \"require_login\":false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server_address}}/url",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"url"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/url?l=12333",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"url"
+							],
+							"query": [
+								{
+									"key": "l",
+									"value": "12333"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search by user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server_address}}/url/search/?u=1879648632",
+							"host": [
+								"{{server_address}}"
+							],
+							"path": [
+								"url",
+								"search",
+								""
+							],
+							"query": [
+								{
+									"key": "u",
+									"value": "1879648632"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxODc5NjQ4NjMyLCJpYXQiOjE2OTkyODMxNzd9.10u8bPihS8p-3P7dy8wqIBmc1CkllkkejPbfeLFzm3E",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "access_token",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "apikey"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server_address",
+			"value": null,
+			"type": "default"
+		}
+	]
+}
