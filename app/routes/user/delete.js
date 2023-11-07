@@ -31,9 +31,7 @@ function DeleteUser(db){
                 },
                 transaction: t
             })
-            await db.models.session_info.update({
-                is_valid: false
-            }, {
+            await db.models.session_info.destroy({
                 where:{
                     user_id: req.user_info.dataValues.user_id
                 },
