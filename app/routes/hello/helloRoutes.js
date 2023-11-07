@@ -1,12 +1,12 @@
 import express from 'express'
 
-class HelloRoute{
-    constructor(db){
+class HelloRoute {
+    constructor(db) {
         this.db = db
         this.router = express.Router()
         this.router.get("/", this.Index)
     }
-    Index(req,res){
+    Index(req, res) {
         res.send("Hello!")
     }
 }

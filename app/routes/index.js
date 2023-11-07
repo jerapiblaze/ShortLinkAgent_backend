@@ -3,7 +3,7 @@ import userRoutes from './user/userRoutes.js';
 import urlRoute from './url/urlRoute.js';
 import sessionRoutes from './session/sessionRoutes.js';
 
-export default function(app, db) {
+export default function (app, db) {
     app.get("/", (req, res) => {
         res.redirect(`/url?id=${req.query.id}`)
     });

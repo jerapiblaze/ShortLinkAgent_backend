@@ -4,7 +4,7 @@ import serverConfig from '../../config/serverConfig.js'
 
 function DeleteSession(db) {
     return async function (req, res) {
-        if (req.user_info == null){
+        if (req.user_info == null) {
             res.status(400).send()
         }
         if (req.query.token == null) {

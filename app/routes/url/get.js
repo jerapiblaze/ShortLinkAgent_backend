@@ -16,12 +16,12 @@ function GetUrl(db) {
         }
         let user_info = req.user_info.dataValues
         let url_info = await db.models.url_info.findByPk(req.query.l)
-        
-        if (url_info == null){
+
+        if (url_info == null) {
             res.status(404).send(req.query)
             return
         }
-        if (url_info.require_login && user_info == null){
+        if (url_info.require_login && user_info == null) {
             res.status(403).send(req.query)
             return
         }

@@ -4,12 +4,12 @@ import serverConfig from '../../config/serverConfig.js'
 
 function GetSession(db) {
     return async function (req, res) {
-        if (req.query.token == null){
+        if (req.query.token == null) {
             res.status(400).send()
             return
         }
         let session = await db.models.session_info.findByPk(req.query.token)
-        if (session == null){
+        if (session == null) {
             res.status(404).send()
             return
         }

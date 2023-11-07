@@ -21,13 +21,13 @@ function DeleteUrl(db) {
         }
         try {
             await db.models.url_info.destroy({
-                where:{
+                where: {
                     url_id: req.query.l
                 },
                 transaction: t
             })
             await db.models.url_stats.destroy({
-                where:{
+                where: {
                     url_id: req.query.l
                 },
                 transaction: t

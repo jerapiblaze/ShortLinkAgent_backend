@@ -8,20 +8,20 @@ import { Op } from "sequelize"
 
 function SearchUser(db) {
     return async function (req, res) {
-        if (req.query.q == null){
+        if (req.query.q == null) {
             res.status(400).send()
             return
         }
         let user_info = await db.models.user_info.findAll({
-            where:{
-                [Op.or]:[
+            where: {
+                [Op.or]: [
                     {
                         fullname: {
                             [Op.substring]: req.query.q
                         }
                     },
                     {
-                        user_id:{
+                        user_id: {
                             [Op.substring]: req.query.q
                         }
                     }
@@ -33,7 +33,7 @@ function SearchUser(db) {
         }
         user_info = user_info.filter(user => {
             if (user.dataValues.protected == null) {
-                if (req.user_id != null){
+                if (req.user_id != null) {
                     return true
                 } else {
                     return false

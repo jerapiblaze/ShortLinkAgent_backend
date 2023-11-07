@@ -6,8 +6,8 @@
 
 function GetUser(db) {
     return async function (req, res) {
-        if (req.query.u == null){
-            if (req.user_info == null){
+        if (req.query.u == null) {
+            if (req.user_info == null) {
                 res.status(400).send()
                 return
             }
@@ -15,15 +15,15 @@ function GetUser(db) {
             return
         }
         let user_info = await db.models.user_info.findByPk(req.query.u)
-        if (user_info == null){
+        if (user_info == null) {
             res.status(404).send(req.query)
             return
         }
-        if (user_info.dataValues.protected == null){
+        if (user_info.dataValues.protected == null) {
             res.send(user_info)
             return
         }
-        if (user_info.dataValues.protected){
+        if (user_info.dataValues.protected) {
             res.status(404).send(req.query)
             return
         }

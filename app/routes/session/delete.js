@@ -19,8 +19,8 @@ function DeleteSession(db) {
         try {
             await db.models.session_info.update({
                 is_valid: false
-            },{
-                where:{
+            }, {
+                where: {
                     token: req.query.token
                 },
                 transaction: t

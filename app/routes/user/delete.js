@@ -1,26 +1,26 @@
 // delete a user
 // if user is not logged in: ignore the request
 
-function DeleteUser(db){
+function DeleteUser(db) {
     return async function (req, res) {
-        if (req.user_info == null){
+        if (req.user_info == null) {
             res.status(403).send()
             return
         }
         let credential = await db.models.user_credential.findOne({
-            where:{
-                user_id:req.user_info.dataValues.user_id,
-                hashed_password:req.body.hashed_password
+            where: {
+                user_id: req.user_info.dataValues.user_id,
+                hashed_password: req.body.hashed_password
             }
         })
-        if (credential == null){
+        if (credential == null) {
             res.status(403).send("invalid password")
             return
         }
         let t = await db.transaction()
         try {
             await db.models.user_info.destroy({
-                where:{
+                where: {
                     user_id: req.user_info.dataValues.user_id
                 },
                 transaction: t
@@ -32,22 +32,22 @@ function DeleteUser(db){
                 transaction: t
             })
             await db.models.session_info.destroy({
-                where:{
+                where: {
                     user_id: req.user_info.dataValues.user_id
                 },
                 transaction: t
             })
-            if (req.body.wipe_data){
+            if (req.body.wipe_data) {
                 let url_list = await db.models.url_info.findAll({
-                    where:{
-                        user_id:req.user_id
+                    where: {
+                        user_id: req.user_id
                     }
                 })
-                for (let url of url_list){
+                for (let url of url_list) {
                     console.log(url)
                     await db.models.url_info.destroy({
-                        where:{
-                            url_id:url.dataValues.url_id
+                        where: {
+                            url_id: url.dataValues.url_id
                         },
                         transaction: t
                     })
@@ -61,7 +61,7 @@ function DeleteUser(db){
             }
             await t.commit()
             res.status(200).send()
-        } catch(e) {
+        } catch (e) {
             t.rollback()
             console.log(e)
             res.status(500).send(e)

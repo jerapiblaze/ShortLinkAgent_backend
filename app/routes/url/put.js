@@ -21,10 +21,10 @@ function UpdateUrl(db) {
         }
         try {
             await db.models.url_info.update({
-                require_login: req.body.require_login!=null ? req.body.require_login : url_info.require_login,
-                original_url: req.body.original_url!=null ? req.body.original_url : url_info.original_url
+                require_login: req.body.require_login != null ? req.body.require_login : url_info.require_login,
+                original_url: req.body.original_url != null ? req.body.original_url : url_info.original_url
             }, {
-                where:{
+                where: {
                     url_id: url_info.url_id
                 },
                 transaction: t

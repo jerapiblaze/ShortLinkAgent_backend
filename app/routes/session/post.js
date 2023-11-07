@@ -9,7 +9,7 @@ function NewSession(db) {
             return
         }
         let t = await db.transaction()
-        try{
+        try {
             let user_credential = await db.models.user_credential.findOne({
                 where: {
                     username: req.body.username,
@@ -26,16 +26,16 @@ function NewSession(db) {
                 is_valid: true,
                 user_id: user_credential.dataValues.user_id
             }
-            let session = await db.models.session_info.create(session_info, {transaction: t})
+            let session = await db.models.session_info.create(session_info, { transaction: t })
             await t.commit()
             res.send(session)
-        } catch(e){
+        } catch (e) {
             await t.rollback()
             res.status(500).send(e)
         } finally {
             await db.sync()
         }
-        
+
     }
 }
 

@@ -19,14 +19,14 @@ function UpdateUserPwd(db) {
                 return
             }
             //update user login info
-            if (user_credential.dataValues.hashed_password != req.body.hashed_password_old){
+            if (user_credential.dataValues.hashed_password != req.body.hashed_password_old) {
                 res.status(403).send("invalid old pwd")
                 return
             }
             await db.models.user_credential.update({
                 hashed_password: req.body.hashed_password_new
             }, {
-                where:{
+                where: {
                     user_id: user_info.user_id
                 },
                 transaction: t

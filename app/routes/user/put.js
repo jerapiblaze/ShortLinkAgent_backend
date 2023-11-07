@@ -15,7 +15,7 @@ function UpdateUser(db) {
         if (user_info == null || user_credential == null) {
             res.status(403).send()
             return
-        }  
+        }
         let t = await db.transaction()
         try {
             //update user info
@@ -24,7 +24,7 @@ function UpdateUser(db) {
                 avatar: req.body.avatar != null ? req.body.avater : user_info.avatar,
                 protect_level: req.body.protect_level != null ? req.body.protect_level : user_info.protect_level
             }, {
-                where:{
+                where: {
                     user_id: user_info.user_id
                 },
                 transaction: t

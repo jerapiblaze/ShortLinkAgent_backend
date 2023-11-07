@@ -20,7 +20,7 @@ function CreateUser(db) {
                     transaction: t
                 }
             )
-            if (existing_usercredential != null){
+            if (existing_usercredential != null) {
                 throw "USER_EXIST"
             }
             let uid = generate_id.userId()

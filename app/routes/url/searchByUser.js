@@ -15,11 +15,11 @@ function GetUrlByUser(db) {
             return
         }
         let user_info = await db.models.user_info.findByPk(req.query.u)
-        if (user_info == null){
+        if (user_info == null) {
             res.status(404).send()
         }
         let url_info = await db.models.url_info.findAll({
-            where:{
+            where: {
                 user_id: user_info.dataValues.user_id
             }
         })
