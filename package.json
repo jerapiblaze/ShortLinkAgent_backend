@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.js",
-    "start_prod": "pm2 start server.js --watch --log ./app_data/server_log.log --restart-delay 500",
+    "start_prod": "pm2 start server.js --watch --log ./app_data/server_log.log --restart-delay 500 -i max",
     "stop_prod": "pm2 stop server"
   },
   "author": "lv-t2",
