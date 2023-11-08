@@ -7,8 +7,6 @@ import serverConfig from '../config/serverConfig.js'
 
 export default function (db) {
     let authFunc = async function (req, res, next) {
-        // console.log("dummy authenticate")
-        // console.log(req.body)
         let t = await db.transaction()
         try {
             if (req.headers.access_token == undefined || req.headers.access_token == null) {

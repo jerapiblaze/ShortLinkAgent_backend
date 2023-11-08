@@ -14,7 +14,7 @@ function GetUrl(db) {
             res.redirect(`/url/search?u=${req.user_info.dataValues.user_id}`)
             return
         }
-        let user_info = req.user_info.dataValues
+        let user_info = req.user_info ? req.user_info.dataValues : null
         let url_info = await db.models.url_info.findByPk(req.query.l)
 
         if (url_info == null) {
