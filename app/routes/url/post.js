@@ -9,9 +9,9 @@ function CreateUrl(db) {
         let t = await db.transaction();
         try {
             let user_info = req.user_info ? req.user_info.dataValues : null
-            let existing_urlinfo = await db.models.url_info.findByPk(req.body.id, { transaction: t })
+            let existing_urlinfo = await db.models.url_info.findByPk(req.body.url_id, { transaction: t })
             if (existing_urlinfo != null) {
-                res.status(400).send("URL ID is not available")
+                throw "url_id is not available"
             }
             let url_id = generate_id.urlId()
             if (user_info && req.body.url_id) {
@@ -32,9 +32,9 @@ function CreateUrl(db) {
             await t.commit()
             res.status(200).send({ url_info, url_stats })
         } catch (e) {
-            console.log(e)
+            // console.log(e)
+            res.status(400).send({error: e})
             await t.rollback();
-            res.status(400).send(e)
         } finally {
             await db.sync()
         }
