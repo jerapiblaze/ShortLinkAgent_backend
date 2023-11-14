@@ -7,7 +7,7 @@ export default function (app, db) {
     app.get("/", (req, res) => {
         res.redirect(`/url?id=${req.query.id}`)
     });
-    app.use("/", rootRoutes(db))
+    app.use("/ping", rootRoutes(db))
     app.use("/user", userRoutes(db))
     app.use("/url", urlRoute(db))
     app.use("/session", sessionRoutes(db))
