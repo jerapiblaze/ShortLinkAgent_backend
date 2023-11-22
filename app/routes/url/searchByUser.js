@@ -32,7 +32,13 @@ function GetUrlByUser(db) {
             res.status(403).send(req.query)
             return
         }
-        res.send(url_info)
+        let output = []
+        for (let url of url_info){
+            let url_stats = await db.models.url_stats.findByPk(url.url_id)
+            url.dataValues.stats = url_stats
+            output.push(url)
+        }
+        res.send(output)
     }
 }
 
