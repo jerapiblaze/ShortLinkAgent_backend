@@ -1,8 +1,7 @@
 // get url by id
 // if user.protected  ==
-//      + null: default (logged in users)
 //      + false: public
-//      + true: private (no one exept user)
+//      + true: private (logged in users only)
 
 function GetUrl(db) {
     return async function (req, res) {
