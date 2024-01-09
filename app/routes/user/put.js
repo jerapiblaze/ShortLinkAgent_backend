@@ -11,7 +11,11 @@ function UpdateUser(db) {
             return
         }
         let user_info = await db.models.user_info.findByPk(req.user_id)
-        let user_credential = await db.models.user_credential.findByPk(req.user_id)
+        let user_credential = await db.models.user_credential.findOne({
+            where:{
+                user_id: req.user_id
+            }
+        })
         if (user_info == null || user_credential == null) {
             res.status(403).send()
             return

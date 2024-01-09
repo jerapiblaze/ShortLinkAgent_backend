@@ -6,11 +6,11 @@ const table = {
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        primaryKey: true,
         autoIncrement: false
     },
     username: {
         type: DataTypes.STRING,
+        primaryKey:true,
         allowNull: false
     },
     hashed_password: {
