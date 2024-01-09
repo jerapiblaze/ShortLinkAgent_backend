@@ -14,5 +14,6 @@ export default async (db) => {
     let session_info = db.define(sessionInfo.tableName, sessionInfo.table)
     console.log(db.models)
     // await db.sync({ force: true })
-    await db.sync({force: config.OVERWRITE})
+    let force = config.OVERWRITE == "true" ? true : false
+    await db.sync({force: force})
 }

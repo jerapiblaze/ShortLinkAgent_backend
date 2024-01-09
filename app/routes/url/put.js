@@ -21,7 +21,8 @@ function UpdateUrl(db) {
         let t = await db.transaction();
         try {
             await db.models.url_info.update({
-                require_login: req.body.require_login != null ? req.body.require_login : url_info.require_login
+                require_login: req.body.require_login != null ? req.body.require_login : url_info.require_login,
+                notes: req.body.notes != null ? req.body.notes : url_info.notes
             }, {
                 where: {
                     url_id: url_info.url_id

@@ -17,11 +17,16 @@ function CreateUrl(db) {
             if (user_info && req.body.url_id) {
                 url_id = req.body.url_id
             }
+            let notes = null
+            if (user_info && req.body.notes) {
+                notes = req.body.url_id
+            }
             let url_info = {
                 url_id: url_id,
                 original_url: req.body.original_url,
                 require_login: user_info ? req.body.require_login : 0,
-                user_id: user_info ? user_info.user_id : null
+                user_id: user_info ? user_info.user_id : null,
+                notes:notes
             }
             let url_stats = {
                 url_id: url_id,
