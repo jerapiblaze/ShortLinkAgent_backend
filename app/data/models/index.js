@@ -1,3 +1,5 @@
+import config from "../../config/dbConfig.js"
+
 import userCredentials from "./userCredentials.js";
 import userInfo from "./userInfo.js";
 import urlInfo from "./urlInfo.js";
@@ -12,5 +14,5 @@ export default async (db) => {
     let session_info = db.define(sessionInfo.tableName, sessionInfo.table)
     console.log(db.models)
     // await db.sync({ force: true })
-    await db.sync()
+    await db.sync({force: config.OVERWRITE})
 }

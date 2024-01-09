@@ -9,5 +9,6 @@ export default {
     DATABASE: process.env.DB_DATABASE,
     DIALECT: process.env.DB_DIALECT,
     PATH: process.env.DB_PATH,
-    LOGGING: process.env.DB_LOGGING
+    LOGGING: process.env.DB_LOGGING,
+    OVERWRITE: process.env.DB_OVR
 }
