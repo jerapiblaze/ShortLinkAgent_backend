@@ -19,6 +19,10 @@ const table = {
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: true
+    },
+    notes:{
+        type: DataTypes.STRING(1000),
+        allowNull: true
     }
 }
 
