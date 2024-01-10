@@ -4,6 +4,7 @@ import get from './get.js'
 import del from './delete.js'
 import put from './put.js'
 import searchByUid from './searchByUser.js'
+import putCustomUrlId from './putCustomUrl.js'
 // import search from './search.js'
 
 export default (db) => {
@@ -13,6 +14,7 @@ export default (db) => {
     router.delete("/", del(db))
     router.put("/", put(db))
     router.get("/search", searchByUid(db))
+    router.put("/customid", putCustomUrlId(db))
     // router.get("/search", search(db))
 
     return router

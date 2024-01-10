@@ -4,6 +4,8 @@
 //      + false: public
 //      + true: private (no one exept user)
 
+import { Op } from "sequelize"
+
 function GetUrlByUser(db) {
     return async function (req, res) {
         if (req.query.u == null) {
@@ -22,7 +24,8 @@ function GetUrlByUser(db) {
         let url_info = await db.models.url_info.findAll({
             where: {
                 user_id: user_info.dataValues.user_id
-            }
+            },
+            include: ["url_stat", "custom_urlids"]
         })
         if (url_info == null) {
             res.status(404).send(req.query)
@@ -32,13 +35,13 @@ function GetUrlByUser(db) {
             res.status(403).send(req.query)
             return
         }
-        let output = []
-        for (let url of url_info){
-            let url_stats = await db.models.url_stats.findByPk(url.url_id)
-            url.dataValues.stats = url_stats
-            output.push(url)
-        }
-        res.send(output)
+        // let output = []
+        // for (let url of url_info){
+        //     let url_stats = await db.models.url_stats.findByPk(url.url_id)
+        //     url.dataValues.stats = url_stats
+        //     output.push(url)
+        // }
+        res.send(url_info)
     }
 }
 

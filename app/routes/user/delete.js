@@ -44,7 +44,6 @@ function DeleteUser(db) {
                     }
                 })
                 for (let url of url_list) {
-                    console.log(url)
                     await db.models.url_info.destroy({
                         where: {
                             url_id: url.dataValues.url_id

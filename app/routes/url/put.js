@@ -8,6 +8,10 @@ function UpdateUrl(db) {
             res.status(403).send()
             return
         }
+        let request_url_id = req.query.l
+        let custom_urlid = await db.models.custom_urlid.findByPk(request_url_id)
+        let url_id = custom_urlid != null ? custom_urlid.url_id : request_url_id
+        
         let user_info = req.user_info ? req.user_info.dataValues : null
         let url_info = await db.models.url_info.findByPk(req.body.url_id)
         if (url_info == null) {
