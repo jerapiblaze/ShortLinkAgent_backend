@@ -12,6 +12,10 @@ function PutCustomUrlId(db) {
         }
         let request_url_id = req.query.l
         let request_custom_id = req.body.url_id
+        if (!request_custom_id){
+            res.status(403).send()
+            return
+        }
         let existing_custom_urlid = await db.models.custom_urlid.findByPk(request_custom_id)
         if (existing_custom_urlid != null){
             res.status(403).send("custom url_id is not available")

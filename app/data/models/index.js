@@ -18,27 +18,27 @@ export default async (db) => {
     user_info.hasMany(user_credentials, {
         foreignKey:"user_id"
     })
-    user_credentials.belongsTo(user_info)
+    // user_credentials.belongsTo(user_info)
     
     user_info.hasMany(session_info, {
         foreignKey: "user_id"
     })
-    session_info.belongsTo(user_info)
+    // session_info.belongsTo(user_info)
 
     user_info.hasMany(url_info, {
         foreignKey: "user_id"
     })
-    url_info.belongsTo(user_info)
+    // url_info.belongsTo(user_info)
     
     url_info.hasOne(url_stats, {
         foreignKey: "url_id"
     })
-    url_stats.belongsTo(url_info)
+    // url_stats.belongsTo(url_info)
 
     url_info.hasMany(custom_urlid, {
         foreignKey: "url_id"
     })
-    custom_urlid.belongsTo(url_info)
+    // custom_urlid.belongsTo(url_info)
     // console.log(db.models)
     // await db.sync({ force: true })
     let force = config.OVERWRITE == "true" ? true : false
