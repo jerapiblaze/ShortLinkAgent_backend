@@ -6,7 +6,8 @@ const table = {
     user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        autoIncrement: false
+        autoIncrement: false,
+        foreignKey: true
     },
     username: {
         type: DataTypes.STRING,

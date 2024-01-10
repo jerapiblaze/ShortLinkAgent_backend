@@ -1,16 +1,15 @@
 import { DataTypes } from "sequelize";
 
-const tableName = "url_stats";
+const tableName = "custom_urlid";
 
 const table = {
-    url_id: {
+    custom_id: {
         type: DataTypes.STRING,
         allowNull: false,
-        primaryKey: true,
-        foreignKey: true
+        primaryKey: true
     },
-    total_clicks: {
-        type: DataTypes.INTEGER,
+    url_id: {
+        type: DataTypes.STRING,
         allowNull: false
     }
 }
