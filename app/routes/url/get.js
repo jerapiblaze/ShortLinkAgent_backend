@@ -21,17 +21,17 @@ function GetUrl(db) {
         let url_info = await db.models.url_info.findByPk(url_id, {
             include: ["url_stat", "custom_urlids"]
         })
-        let url_stats = await db.models.url_stats.findByPk(url_id)
-        if (url_info == null) {
-            res.status(404).send(req.query)
-            return
-        }
-        let total_clicks = url_stats.dataValues.total_clicks + 1
-        db.models.url_stats.update({total_clicks:total_clicks}, {
-            where:{
-                url_id:url_info.url_id
-            }
-        })
+        // let url_stats = await db.models.url_stats.findByPk(url_id)
+        // if (url_info == null) {
+        //     res.status(404).send(req.query)
+        //     return
+        // }
+        // let total_clicks = url_stats.dataValues.total_clicks + 1
+        // db.models.url_stats.update({total_clicks:total_clicks}, {
+        //     where:{
+        //         url_id:url_info.url_id
+        //     }
+        // })
         db.sync()
         if (url_info.require_login && user_info == null) {
             res.status(403).send(req.query)
